@@ -1,4 +1,5 @@
 import flet as ft
+from components import CSnackBar
 
 
 def login_view(page: ft.Page):
@@ -16,11 +17,7 @@ def login_view(page: ft.Page):
         if user_name.value == "admin" and password.value == "admin123":
             page.go("/dashboard")
         else:
-            snack = ft.SnackBar(
-                content=ft.Text("Invalid username or password"),
-                bgcolor=ft.Colors.RED,
-            )
-            page.show_dialog(snack)
+            CSnackBar.show(page, "Invalid username or password", severity="success")
         page.update()
 
     login_button = ft.Button(
